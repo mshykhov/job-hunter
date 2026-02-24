@@ -52,7 +52,7 @@ job-hunter/
 ```
 n8n (scraping)  →  REST API  →  Kotlin API  →  Telegram Bot
 DOU, Djinni,                        ↓              ↓
-Indeed                          PostgreSQL     Push notifications
+Adzuna                          PostgreSQL     Push notifications
                                      ↑
                                   React UI
 ```
