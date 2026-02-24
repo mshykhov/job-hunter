@@ -1,3 +1,6 @@
 [submodule "n8n"]
 	path = n8n
 	url = git@github.com:mshykhov/job-hunter-n8n.git
+[submodule "api"]
+	path = api
+	url = git@github.com:mshykhov/job-hunter-api.git
