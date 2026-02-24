@@ -1,99 +1,79 @@
 # job-hunter
 
-**TL;DR:** Система мониторинга и трекинга вакансий. Монорепо координирует субмодули.
+**TL;DR:** Job vacancy monitoring and tracking system. Monorepo coordinating submodules.
 
-> **Стек**: n8n (scraping), Kotlin + Spring Boot (API + Telegram bot), React (UI), PostgreSQL
+> **Stack**: n8n (scraping), Kotlin + Spring Boot (API + Telegram bot), React (UI), PostgreSQL
 
 ---
 
 ## Portfolio Project
 
-**Этот репозиторий — публичный portfolio-проект.** Весь код, документация, коммиты и архитектурные решения должны демонстрировать профессиональный уровень разработки.
+**This is a public portfolio repository.** All code, documentation, commits, and architectural decisions must demonstrate professional-level engineering.
 
-### Требования к качеству
-- **Чистый, читаемый код** — именование, структура, форматирование на уровне production
-- **Осмысленные коммиты** — conventional commits, понятные сообщения, атомарные изменения
-- **README** в каждом субмодуле — описание, архитектура, quick start
-- **Без мусора** — никаких TODO-хаков, закомментированного кода, временных решений в master
-- **Без упоминаний AI** — коммиты и код не должны указывать на генерацию AI
-- **Английский** — весь код, комментарии, коммиты, README на английском
-- **CLAUDE.md** — единственные файлы на русском (не видны обычным пользователям GitHub)
+### Quality Standards
+- **Clean, readable code** — naming, structure, formatting at production level
+- **Meaningful commits** — conventional commits, clear messages, atomic changes
+- **README** in every submodule — description, architecture, quick start
+- **No junk** — no TODO-hacks, commented-out code, or temporary solutions in master
+- **No AI mentions** — commits and code must not reference AI generation
+- **English only** — all code, comments, commits, README, CLAUDE.md in English
 
 ---
 
-## Руководство для AI
+## AI Guidelines
 
-### Работа с субмодулями
-**ВАЖНО:** Перед изменением субмодуля — прочитай его `CLAUDE.md`:
+### Submodule Awareness
+**IMPORTANT:** Read the submodule's `CLAUDE.md` before making changes:
 ```
-n8n/CLAUDE.md        — n8n workflows, скрапинг
+n8n/CLAUDE.md        — scraping workflows
 api/CLAUDE.md        — Kotlin backend, Telegram bot
 ui/CLAUDE.md         — React frontend
 ```
 
-### Глобальные правила
-- **Atomic commits**: Один коммит = одна законченная единица работы
-- **Cross-repo awareness**: Изменения часто затрагивают несколько субмодулей
-- **No secrets in code**: Секреты через .env (gitignored), Doppler, K8s Secrets
+### Rules
+- **Atomic commits** — one commit = one completed unit of work
+- **Cross-repo awareness** — changes often span multiple submodules
+- **No secrets in code** — secrets via .env (gitignored), Doppler, K8s Secrets
+- **Conventional commits** — `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`, `ci:`
 
 ---
 
-## Структура
+## Structure
 
 ```
 job-hunter/
-  n8n/          # Scraping workflows (субмодуль)
-  api/          # Kotlin Spring Boot + Telegram bot (субмодуль, позже)
-  ui/           # React frontend (субмодуль, позже)
+  n8n/          # Scraping workflows (submodule)
+  api/          # Kotlin Spring Boot + Telegram bot (submodule, coming soon)
+  ui/           # React frontend (submodule, coming soon)
 ```
 
-## Архитектура
+## Architecture
 
 ```
-n8n (scraping)  →  POST /api/jobs/ingest  →  Kotlin API  →  Telegram Bot
-DOU, Djinni,                                     ↓              ↓
-Indeed                                       PostgreSQL     Push notifications
-                                                 ↑
-                                              React UI
+n8n (scraping)  →  REST API  →  Kotlin API  →  Telegram Bot
+DOU, Djinni,                        ↓              ↓
+Indeed                          PostgreSQL     Push notifications
+                                     ↑
+                                  React UI
 ```
 
-## Работа с субмодулями
+## Working with Submodules
 
-### Клонирование
+### Clone
 ```bash
 git clone --recurse-submodules git@github.com:mshykhov/job-hunter.git
 ```
 
-### Обновление
+### Update
 ```bash
 git submodule update --remote --merge
 ```
 
-### Изменение субмодуля
-```bash
-cd n8n
-git add . && git commit -m "feat: description"
-git push origin master
+### Adding a New Submodule
 
-cd ..
-git add n8n
-git commit -m "chore: update submodule n8n"
-git push
-```
-
-## Добавление нового субмодуля
-
-| Шаг | Действие |
-|-----|----------|
-| 1 | Создать репо `job-hunter-{name}` на GitHub |
+| Step | Action |
+|------|--------|
+| 1 | Create repo `job-hunter-{name}` on GitHub |
 | 2 | `git submodule add git@github.com:mshykhov/job-hunter-{name}.git {name}` |
-| 3 | Commit + push монорепо |
-| 4 | Для деплоя: Helm chart в smhomelab/deploy |
-
-## Git соглашения
-
-```
-{type}: {описание на английском}
-
-Типы: feat, fix, docs, chore, refactor, test, ci
-```
+| 3 | Commit + push monorepo |
+| 4 | For deployment: Helm chart in smhomelab/deploy |
