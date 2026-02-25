@@ -10,8 +10,9 @@ Automated job vacancy monitoring and tracking system. Aggregates listings from m
 │  (scraping) │           │  Spring Boot  │
 │             │           │               │
 │ • DOU RSS   │           │ • REST API    │
-│ • Djinni    │           │ • Telegram Bot│
-│ • Indeed    │           │ • Job Dedup   │
+│ • Djinni †  │           │ • Telegram Bot│
+│ • LinkedIn †│           │ • Job Dedup   │
+│ • Google †  │           │               │
 └─────────────┘           └───────┬───────┘
                                   │
                            ┌──────┴──────┐
@@ -22,6 +23,8 @@ Automated job vacancy monitoring and tracking system. Aggregates listings from m
                            │  React UI   │
                            │  Dashboard  │
                            └─────────────┘
+
+† = planned
 ```
 
 ## Tech Stack
@@ -41,8 +44,8 @@ This is a monorepo that coordinates individual service repositories via Git subm
 
 | Submodule | Repository | Description |
 |-----------|------------|-------------|
-| `n8n/` | [job-hunter-n8n](https://github.com/mshykhov/job-hunter-n8n) | Scraping workflows for DOU, Djinni, Indeed |
-| `api/` | job-hunter-api | Kotlin Spring Boot backend + Telegram bot (coming soon) |
+| `n8n/` | [job-hunter-n8n](https://github.com/mshykhov/job-hunter-n8n) | Scraping workflows (DOU live, Djinni/LinkedIn/Google Jobs planned) |
+| `api/` | [job-hunter-api](https://github.com/mshykhov/job-hunter-api) | Kotlin Spring Boot backend + Telegram bot |
 | `ui/` | job-hunter-ui | React web dashboard (coming soon) |
 
 ## Getting Started
@@ -59,7 +62,7 @@ docker compose up -d    # http://localhost:5678
 
 ## Features
 
-- **Multi-source scraping** — DOU, Djinni, Indeed (extensible to more platforms)
+- **Multi-source scraping** — DOU, Djinni, LinkedIn, Google Jobs (extensible)
 - **Telegram notifications** — instant push with inline action buttons
 - **Job tracking** — mark vacancies as Applied / Irrelevant
 - **Web dashboard** — browse, filter, and manage job listings
