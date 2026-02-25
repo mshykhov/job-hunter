@@ -5,6 +5,7 @@
 
 # MCP config (contains API keys)
 .mcp.json
+.playwright-mcp/
 
 # OS
 .DS_Store
