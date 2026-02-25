@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JobHunterApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="job-hunter-api.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.mshykhov.jobhunter.JobHunterApiApplicationKt" />
+    <option name="ACTIVE_PROFILES" value="local" />
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/api/.env" />
+    </option>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
