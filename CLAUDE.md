@@ -16,6 +16,7 @@
 - **README** in every submodule — description, architecture, quick start
 - **No junk** — no TODO-hacks, commented-out code, or temporary solutions in master
 - **No AI mentions** — commits and code must not reference AI generation
+- **No Co-Authored-By** — never add Co-Authored-By, Signed-off-by, or any trailer referencing Claude/AI
 - **English only** — all code, comments, commits, README, CLAUDE.md in English
 
 ---
