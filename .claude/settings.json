@@ -1,0 +1,16 @@
+{
+  "enabledMcpjsonServers": ["n8n"],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/no-ai-trailers.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
